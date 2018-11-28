@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  gather_facts: "no"
+  tasks:
+    - name: Create a new AWS EC2 instance [Type=t3.small | Volume=12GB gp2]
+      ec2:
+        aws_access_key: ""
+        aws_secret_key: ""
+        image: ami-0653e888ec96eab9b
+        instance_type: t3.small
+        key_name: noah-key
+        region: us-east-2
+        state: present
+        volumes:
+          - device_name: /dev/xvda
+            volume_type: gp2
+            volume_size:
+        wait: "yes"
+        wait_timeout: 400
