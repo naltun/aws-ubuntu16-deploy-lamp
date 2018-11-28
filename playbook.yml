@@ -2,14 +2,14 @@
 - hosts: localhost
   gather_facts: "no"
   tasks:
-    - name: Create a new AWS EC2 instance [Type=t3.small | Volume=12GB gp2]
+    - name: Create a new AWS EC2 VM [OS=Ubuntu16, Type=t3.small, Volume=12GB]
       ec2:
         aws_access_key: ""
         aws_secret_key: ""
         image: ami-0653e888ec96eab9b
         instance_type: t3.small
-        key_name: noah-key
-        region: us-east-2
+        key_name:
+        region:
         state: present
         volumes:
           - device_name: /dev/xvda
