@@ -4,16 +4,21 @@
   tasks:
     - name: Create a new AWS EC2 VM [OS=Ubuntu16, Type=t3.small, Volume=12GB]
       ec2:
+        # Add your AWS access/secret keys below for accessing your root account
         aws_access_key: ""
         aws_secret_key: ""
         image: ami-0653e888ec96eab9b
         instance_type: t3.small
+        # Add the key pair name for your EC2 instance
         key_name:
+        # Add the region where the EC2 instance will be deployed
         region:
         state: present
         volumes:
           - device_name: /dev/xvda
             volume_type: gp2
+            # Add the harddisk size (as a single/double digit, eg. 12)
+            # The size is in GB
             volume_size:
         wait: "yes"
         wait_timeout: 400
