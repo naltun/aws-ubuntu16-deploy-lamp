@@ -26,3 +26,4 @@
             volume_size: "{{ vm_volume_size }}"
         wait: "yes"
         wait_timeout: 400
+      register: ec2_vm
