@@ -8,10 +8,10 @@
       secret_key: ""
       key_pair_name: ""
       vm_region: ""
-      vm_volume_size:
+      vm_volume_size: ""
 
   tasks:
-    - name: Create a new AWS EC2 VM [OS=Ubuntu16, Type=t3.small, Volume=12GB]
+    - name: Create a new AWS EC2 instance
       ec2:
         aws_access_key: "{{ access_key }}"
         aws_secret_key: "{{ secret_key }}"
