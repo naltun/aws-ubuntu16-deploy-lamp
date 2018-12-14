@@ -45,7 +45,7 @@
   gather_facts: false
   pre_tasks:
     - name: Install python
-      raw: "sudo apt install -y python"
+      raw: "apt install -y python"
 
   tasks:
     - name: Install Apache
@@ -97,7 +97,7 @@
     - name: Install PHP 7.0 XML
       apt:
         name: php7.0-xml
-        apt: present
+        state: present
 
     - name: Install PHP 7.0 MySQL library
       apt:
@@ -123,7 +123,6 @@
       service:
         name: mysql
         state: started
-        enable: true
 
     - name: Install Python MySQL package
       apt:
