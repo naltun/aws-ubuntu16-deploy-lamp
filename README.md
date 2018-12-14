@@ -1,4 +1,5 @@
 ## Deploy a LAMP stack on a new AWS virtual machine
+[![Shields.io](https://img.shields.io/badge/free%20software-support%20free%2Flibre%20software-yellow.svg)](https://en.wikipedia.org/wiki/Free_software) ![](https://img.shields.io/hexpm/l/plug.svg) [![Shields.io](https://img.shields.io/badge/developed%20on-GNU%2FLinux-purple.svg)](https://www.debian.org/releases/jessie/amd64/ch01s02.html.en)
 
 ### What is this?
 This Ansible playbook deploys an EC2 instance on AWS, then deploys the LAMP stack to the provisioned virtual machine.
