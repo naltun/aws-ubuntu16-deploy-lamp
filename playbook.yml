@@ -31,7 +31,7 @@
     - name: Add the new VM IP address to the hosts file in `servers' group
       add_host:
         name: "{{ ec2_vm.instances[0].public_ip }}"
-        groups: servers
+        groups: ec2instances
 
     - name: Wait for SSH connection
       wait_for:
@@ -39,7 +39,7 @@
         port: 22
         state: started
 
-- hosts: servers
+- hosts: ec2instances
   remote_user: ubuntu
   become: true
   gather_facts: false
@@ -52,7 +52,90 @@
       apt:
         name: apache2
         state: present
-    - service:
+
+    - name: Start Apache
+      service:
         name: apache2
         state: started
         enabled: true
+
+    - name: Install PHP 7.0
+      apt:
+        name: php7.0
+        state: present
+
+    - name: Install Apache PHP module
+      apt:
+        name: libapache2-mod-php7.0
+        state: present
+
+    - name: Install PHP 7.0 CLI
+      apt:
+        name: php7.0-cli
+        state: present
+
+    - name: Install PHP 7.0 Common API
+      apt:
+        name: php7.0-common
+        state: present
+
+    - name: Install PHP 7.0 MBString library
+      apt:
+        name: php7.0-mbstring
+        state: present
+
+    - name: Install PHP 7.0 GD library
+      apt:
+        name: php7.0-gd
+        state: present
+
+    - name: Install PHP 7.0 INTL library
+      apt:
+        name: php7.0-intl
+        state: present
+
+    - name: Install PHP 7.0 XML
+      apt:
+        name: php7.0-xml
+        apt: present
+
+    - name: Install PHP 7.0 MySQL library
+      apt:
+        name: php7.0-mysql
+        state: present
+
+    - name: Install PHP 7.0 MCrypt library
+      apt:
+        name: php7.0-mcrypt
+        state: present
+
+    - name: Install PHP 7.0 Zip library
+      apt:
+        name: php7.0-zip
+        state: present
+
+    - name: Install MariaDB server package
+      apt:
+        name: mariadb-server
+        state: present
+
+    - name: Start MySQL service
+      service:
+        name: mysql
+        state: started
+        enable: true
+
+    - name: Install Python MySQL package
+      apt:
+        name: python-mysqldb
+        state: present
+
+    - name: Install MySQL extension for PHP
+      apt:
+        name: php7.0-mysql
+        state: present
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
